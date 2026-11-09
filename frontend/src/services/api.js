@@ -1,6 +1,18 @@
-const API_URL = "http://localhost:5000/api/transactions";
 
+// ==========================================
+// SMART EXPENSE TRACKER - API CONFIGURATION
+// ==========================================
+
+// LIVE BACKEND URL
+const API_URL = `${
+  import.meta.env.VITE_API_URL ||
+  "https://smartexpensetracker-836g.onrender.com"
+}/api/transactions`;
+
+// ==========================================
 // GET ALL TRANSACTIONS
+// ==========================================
+
 export const getTransactions = async () => {
   const response = await fetch(API_URL);
   const data = await response.json();
@@ -12,7 +24,10 @@ export const getTransactions = async () => {
   return data;
 };
 
+// ==========================================
 // ADD TRANSACTION
+// ==========================================
+
 export const addTransactionAPI = async (transaction) => {
   const response = await fetch(API_URL, {
     method: "POST",
@@ -31,7 +46,10 @@ export const addTransactionAPI = async (transaction) => {
   return data;
 };
 
+// ==========================================
 // UPDATE TRANSACTION
+// ==========================================
+
 export const updateTransactionAPI = async (id, transaction) => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: "PUT",
@@ -50,7 +68,10 @@ export const updateTransactionAPI = async (id, transaction) => {
   return data;
 };
 
+// ==========================================
 // DELETE TRANSACTION
+// ==========================================
+
 export const deleteTransactionAPI = async (id) => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
